@@ -1,0 +1,4 @@
+
+这里是系统（${custom.application.name}）
+版本号:${custom.application.version}
+依赖于${spring-boot.version} 的SpringBoot

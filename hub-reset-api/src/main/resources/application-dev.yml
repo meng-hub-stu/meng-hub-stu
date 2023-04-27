@@ -1,0 +1,32 @@
+server:
+  port: 9090
+
+spring:
+  datasource:                                           # 数据源的相关配置
+    url: jdbc:mysql://localhost:3306/hub-util?useSSL=false&useUnicode=true&characterEncoding=UTF-8&autoReconnect=true
+    password: root
+  redis:
+#   单机模式
+    database: 1
+#    password: imooc
+    host: 127.0.0.1
+
+#    哨兵模式
+#    database: 1
+#    sentinel:
+#      master: imooc-master
+#      nodes: 192.168.32.30:26379,192.168.32.31:26379,192.168.32.32:26379
+
+#    集群模式
+#   集群模式下没有database
+#    password: imooc
+#    cluster:
+#      nodes: 192.168.32.40:6379,192.168.32.41:6379,192.168.32.42:6379,192.168.32.43:6379,192.168.32.44:6379,192.168.32.45:6379
+
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl   #打印sql
+
+logging:
+  level:
+    com.mdx.mapper: debug
