@@ -1,6 +1,7 @@
 package com.mdx.pojo;
 
 import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -12,6 +13,8 @@ import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * @author Mengdl
@@ -54,5 +57,8 @@ public class User extends BaseEntity{
 
     @ApiModelProperty(value = "姓名")
     private String name;
+
+    @TableField(exist = false)
+    private Set<Role> roles = new HashSet<Role>(0);
 
 }
