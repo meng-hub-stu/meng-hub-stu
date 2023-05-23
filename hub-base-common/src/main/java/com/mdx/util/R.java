@@ -1,6 +1,7 @@
 package com.mdx.util;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.Serializable;
@@ -24,6 +25,7 @@ import java.io.Serializable;
  * @author 慕课网 - 风间影月
  * @version V1.0
  */
+@JsonInclude(value= JsonInclude.Include.NON_NULL)
 public class R<T> implements Serializable {
 
     // 定义jackson对象
