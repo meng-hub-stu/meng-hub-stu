@@ -7,6 +7,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,6 +24,7 @@ public class SecurityController {
 
     @GetMapping(value = "test")
     @ApiOperation(value = "测试", notes = "无参")
+    @PreAuthorize("hasAuthority('123')")
     public R security() {
         return R.ok("测试成功");
     }

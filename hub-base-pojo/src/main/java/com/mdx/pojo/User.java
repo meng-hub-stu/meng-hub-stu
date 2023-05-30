@@ -10,11 +10,10 @@ import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.*;
+import org.assertj.core.util.Lists;
 import org.springframework.format.annotation.DateTimeFormat;
 
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 /**
  * @author Mengdl
@@ -30,6 +29,26 @@ import java.util.Set;
 public class User extends BaseEntity{
     private static final long serialVersionUID = 1L;
 
+    /**
+     * 测试账号名单
+     */
+    public static List<String> OPERATOR_TEST_LIST;
+    /**
+     * 支持多人登录账号名单
+     */
+    public static List<String> MULTIPLE_SIMULTANEOUS_ONLINE_USERS;
+
+    static {
+        OPERATOR_TEST_LIST = Lists.newArrayList(
+                "cs1", "cs2", "cs3", "cs4", "cs5", "cccezsr2", "ccceshizsr", "shuangyi",
+                "ceshiss1", "ceshiss", "ccceshi", "ceshiyyn", "liuyw", "ccpm",
+                "fujiawei", "CQyunyingceshi", "LXTBceshi", "LXZBXBKceshi",
+                "CHECHEZBKFfy", "liss", "zhaoshirong", "baojia"
+        );
+        MULTIPLE_SIMULTANEOUS_ONLINE_USERS = Lists.newArrayList("LX2011XKJzx");
+        MULTIPLE_SIMULTANEOUS_ONLINE_USERS.addAll(OPERATOR_TEST_LIST);
+
+    }
     @ApiModelProperty(value = "主键")
     @TableId(value = "id", type = IdType.ASSIGN_ID)
     @JsonSerialize(using = ToStringSerializer.class)

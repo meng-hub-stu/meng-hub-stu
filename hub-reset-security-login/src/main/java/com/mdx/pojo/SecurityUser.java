@@ -1,6 +1,7 @@
 package com.mdx.pojo;
 
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.util.ObjectUtils;
 
@@ -25,13 +26,14 @@ public class SecurityUser implements UserDetails, Serializable {
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         Collection<GrantedAuthority> authList = new ArrayList<>();
-        for(Role role:this.user.getRoles()){
+        for(Role role : this.user.getRoles()){
             //1.1角色关键词
            /* authList.add(new SimpleGrantedAuthority(role.getKeyword()));
             for (Permission permission:role.getPermissions()){
                 //1.2权限关键词
                 authList.add(new SimpleGrantedAuthority(permission.getKeyword()));
             }*/
+            authList.add(new SimpleGrantedAuthority(role.getId().toString()));
         }
         return authList;
     }
