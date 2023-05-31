@@ -52,6 +52,7 @@ public class JwtVerifyFilter extends BasicAuthenticationFilter {
         String jwt = userCacheService.getJwtByJti(jti);
         checkJwt(jwt);
         Payload<JwtClaim> payload = JwtUtils.getInfoFromToken(jwt, prop.getPublicKey(), JwtClaim.class);
+        //用哪个构造器都可以
         SecurityUser securityUser = new SecurityUser(userCacheService.getUserAndRenewalByUserNameAndJti(payload.getUserInfo().getUsername(), jti), jti);
         //校验权限等问题
         UsernamePasswordAuthenticationToken authResult =

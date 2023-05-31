@@ -17,6 +17,7 @@
         <module>hub-reset-api</module>
         <module>hub-reset-login</module>
         <module>hub-reset-security-login</module>
+        <module>hub-base-configuration</module>
     </modules>
 
     <name>meng-hub-stu</name>

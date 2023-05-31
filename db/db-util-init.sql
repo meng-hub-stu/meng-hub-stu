@@ -33,3 +33,19 @@ create table hub_log(
   `is_deleted` TINYINT(1) DEFAULT 0 COMMENT ''是否已删除'',
   	PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COMMENT=''日志表'';
+
+-- 部门隔离表
+create table hub_dept(
+	`id` bigint(64) NOT NULL COMMENT 'id',
+	`tenant_id` varchar(12) DEFAULT null COMMENT '租户id',
+	`dept_name` varchar(64) DEFAULT null COMMENT '标体',
+	`dept_id` BIGINT(64) DEFAULT null COMMENT '部门id',
+	`dept_alias` varchar(512) DEFAULT null COMMENT '部门别名',
+	`create_user` bigint(64) DEFAULT NULL COMMENT '创建人',
+	`create_time` datetime DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `update_user` bigint(64) DEFAULT NULL COMMENT '修改人',
+  `update_time` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
+	`status` TINYINT(1) DEFAULT 1 COMMENT '状态',
+  `is_deleted` TINYINT(1) DEFAULT 0 COMMENT '是否已删除',
+  	PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COMMENT='部门隔离表';
