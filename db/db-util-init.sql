@@ -1,6 +1,7 @@
 -- 用户登录表
 CREATE TABLE `hub_user` (
   `id` bigint(64) NOT NULL COMMENT ''id'',
+  `tenant_id` varchar(12) DEFAULT null COMMENT '租户id',
   `birthday` datetime DEFAULT NULL COMMENT ''生日'',
   `gender` varchar(1) DEFAULT NULL COMMENT ''性别'',
   `user_name` varchar(32) NOT NULL COMMENT ''用户名'',
@@ -22,6 +23,7 @@ CREATE TABLE `hub_user` (
 -- 存储日志
 create table hub_log(
 	`id` bigint(64) NOT NULL COMMENT ''id'',
+	`tenant_id` varchar(12) DEFAULT null COMMENT '租户id',
 	`method` varchar(64) DEFAULT null COMMENT ''方法'',
 	`title` varchar(64) DEFAULT null COMMENT ''标体'',
 	`content` varchar(512) DEFAULT null COMMENT ''内容'', 	
