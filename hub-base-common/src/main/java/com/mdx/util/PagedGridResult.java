@@ -43,8 +43,8 @@ public class PagedGridResult {
 		this.rows = rows;
 	}
 
-	public static PagedGridResult setterPagedGridResult(Integer page, List<?> params){
-		PageInfo<?> pageList = new PageInfo<>(params);
+	public static <T> PagedGridResult setterPagedGridResult(Integer page, List<T> params){
+		PageInfo<T> pageList = new PageInfo<>(params);
 		PagedGridResult result = new PagedGridResult();
 		result.setPage(page);
 		result.setRows(params);

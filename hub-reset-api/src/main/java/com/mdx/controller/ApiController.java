@@ -1,8 +1,10 @@
 package com.mdx.controller;
 
+import com.alibaba.fastjson.JSON;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.github.pagehelper.PageHelper;
 import com.mdx.pojo.User;
+import com.mdx.pojo.bo.TestBO;
 import com.mdx.service.IUserService;
 import com.mdx.util.PagedGridResult;
 import com.mdx.util.R;
@@ -11,6 +13,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -21,6 +24,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping(value = "/api")
 @AllArgsConstructor
 @Api(value = "表格", tags = "表格")
+@Slf4j
 public class ApiController {
 
     private final IUserService userService;
@@ -30,6 +34,13 @@ public class ApiController {
     @RedisLock
     public R<User> test(@PathVariable("id") Long id) {
         return R.ok(userService.getById(id));
+    }
+
+    @PostMapping(value = "test")
+    @ApiOperation(value = "测试对象属性", notes = "test对象")
+    public R<String> check(@RequestBody TestBO testBO) {
+        log.info("测试对象->{}", JSON.toJSONString(testBO));
+        return R.ok("1");
     }
 
     @GetMapping(value = "page")
