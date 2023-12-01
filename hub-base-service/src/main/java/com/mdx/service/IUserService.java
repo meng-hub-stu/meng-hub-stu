@@ -9,5 +9,9 @@ import com.mdx.pojo.User;
  */
 public interface IUserService extends IService<User> {
 
+    /**
+     * 测试异步程序
+     */
+    void asyncData();
 
 }

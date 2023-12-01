@@ -71,4 +71,11 @@ public class ApiController {
         return R.ok(PagedGridResult.setterPagedGridResult(page, userService.list(Wrappers.<User>lambdaQuery().eq(User::getStatus, 1))));
     }
 
+    @GetMapping(value = "async")
+    @ApiOperation(value = "测试异步方法", notes = "查询id")
+    public R<String> syncData() {
+        userService.asyncData();
+        return R.ok("主程序结果正确");
+    }
+
 }
