@@ -44,9 +44,9 @@ public class DeptInterceptConfiguration implements ImportAware {
     }
 
     @Bean
-    public MybatisPlusInterceptor mybatisPlusInterceptor() {
+    public MybatisPlusInterceptor mybatisPlusInterceptor(TenantLineHandler tenantLineHandler) {
         MybatisPlusInterceptor interceptor = new MybatisPlusInterceptor();
-        interceptor.addInnerInterceptor(new TenantLineInnerInterceptor(tenantLineHandler()));
+        interceptor.addInnerInterceptor(new SystemTenantLineInnerInterceptor(tenantLineHandler));
         // 配置部门权限拦截器
         interceptor.addInnerInterceptor(new DeptLineInnerInterceptor(column, asList(value)));
         // 配置分页拦截器

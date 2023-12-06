@@ -21,16 +21,15 @@ public class BaseTenantHandler implements TenantLineHandler {
 
     @Override
     public String getTenantIdColumn() {
-        return "tenant_id";
+        return properties.getColumn();
     }
 
     @Override
     public boolean ignoreTable(String tableName) {
-        //测试使用
-        if (tableName.equals("hub_dept")) {
-            return false;
-        }
-        return true;
+        return !(
+                (properties.getTables().size() > 0 && properties.getTables().contains(tableName))
+                        || properties.getBladeTables().contains(tableName)
+                );
     }
 
 }
