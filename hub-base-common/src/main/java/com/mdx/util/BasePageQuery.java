@@ -11,7 +11,7 @@ import javax.validation.constraints.Positive;
 
 import static com.baomidou.mybatisplus.core.metadata.OrderItem.asc;
 import static com.baomidou.mybatisplus.core.metadata.OrderItem.desc;
-import static org.apache.commons.lang.StringUtils.isNotBlank;
+import static org.apache.commons.lang3.StringUtils.isNotBlank;
 
 /**
  * 分页查询条件
